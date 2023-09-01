@@ -1,9 +1,9 @@
 # Boboduino MiniCore
 [![Build Status](https://travis-ci.com/MCUdude/MiniCore.svg?branch=master)](https://travis-ci.com/MCUdude/MiniCore) [![MiniCore forum thread](https://img.shields.io/badge/support-forum-blue.svg)](https://forum.arduino.cc/index.php?topic=412070.0)
 
-An Arduino core modified from [MiniCore](https://github.com/MCUdude/MiniCore) for the Boboduino Uno R3 board, running a [custom version of Optiboot for increased functionality](#write-to-own-flash). This core requires at least Arduino IDE v1.6.2, where v1.8.13+ is recommended. <br/>
-**This core gives you two extra IO pins if you're using the internal oscillator!** PB6 and PB7 is mapped to [Arduino pin 20 and 21](#pinout).<br/>
-If you're into "generic" AVR programming, I'm happy to tell you that all relevant keywords are being highlighted by the IDE through a separate keywords file. Make sure to test the [example files](https://github.com/MCUdude/MiniCore/tree/master/avr/libraries/AVR_examples/examples) (File > Examples > AVR C code examples). Try writing a register name, <i>DDRB</i> for instance, and see for yourself!
+* An Arduino core modified from [MiniCore](https://github.com/MCUdude/MiniCore) for the Boboduino Uno R3 board, running a [custom version of Optiboot for increased functionality](#write-to-own-flash). This core requires at least Arduino IDE v1.6.2, where v1.8.13+ is recommended. <br/>
+
+* If you're into "generic" AVR programming, I'm happy to tell you that all relevant keywords are being highlighted by the IDE through a separate keywords file. Make sure to test the [example files](https://github.com/MCUdude/MiniCore/tree/master/avr/libraries/AVR_examples/examples) (File > Examples > AVR C code examples). Try writing a register name, <i>DDRB</i> for instance, and see for yourself!
 
 
 # Table of contents
@@ -28,12 +28,18 @@ If you're into "generic" AVR programming, I'm happy to tell you that all relevan
 
 
 ## Supported microcontrollers:
-* ATmega328A/328P/328PA/328PB
+* ATmega328PB/328A/328P/328PA
+* Boboduino Uno R3 adapt the Atmega 328PB chip as the default processer, however this board can also support other 328 series chip if you like to replace it with other ones.
 
 
 
 ## Supported clock frequencies
-MiniCore supports a variety of different clock frequencies. Select the microcontroller in the boards menu, then select the clock frequency. You'll have to hit "Burn bootloader" in order to set the correct fuses and upload the correct bootloader.
+The original MiniCore botloader supports a variety of different clock frequencies. However, we restricted it to support only 16 MHz external crystal oscillator to avoid confusion for the beginner. 
+
+### Change to other frquency (advanced user)
+If you want to replace
+You can turn it on if you Select the microcontroller in the boards menu, then select the clock frequency. 
+You'll have to hit "Burn bootloader" in order to set the correct fuses and upload the correct bootloader.
 Make sure you connect an ISP programmer, and select the correct one in the "Programmers" menu. For time critical operations an external crystal/oscillator is recommended.
 
 You might experience upload issues when using the internal oscillator. It's factory calibrated but may be a little "off" depending on the calibration, ambient temperature and operating voltage. If uploading failes while using the 8 MHz internal oscillator you have these options:
