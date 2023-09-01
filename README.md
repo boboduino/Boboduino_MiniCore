@@ -1,10 +1,14 @@
 # Boboduino MiniCore
 [![Build Status](https://travis-ci.com/MCUdude/MiniCore.svg?branch=master)](https://travis-ci.com/MCUdude/MiniCore) [![MiniCore forum thread](https://img.shields.io/badge/support-forum-blue.svg)](https://forum.arduino.cc/index.php?topic=412070.0)
+## What is Boboduino?
 
+
+
+## What is Boboduino MiniCore?
 * An Arduino core modified from [MiniCore](https://github.com/MCUdude/MiniCore) for the Boboduino Uno R3 board, running a [custom version of Optiboot for increased functionality](#write-to-own-flash). This core requires at least Arduino IDE v1.6.2, where v1.8.13+ is recommended. <br/>
 
 * If you're into "generic" AVR programming, I'm happy to tell you that all relevant keywords are being highlighted by the IDE through a separate keywords file. Make sure to test the [example files](https://github.com/MCUdude/MiniCore/tree/master/avr/libraries/AVR_examples/examples) (File > Examples > AVR C code examples). Try writing a register name, <i>DDRB</i> for instance, and see for yourself!
-
+---
 
 # Table of contents
 * [Supported microcontrollers](#supported-microcontrollers)
@@ -26,15 +30,20 @@
 * **[Pinout](#pinout)**
 * **[Minimal setup](#minimal-setup)**
 
+---
 
-## Supported microcontrollers:
-* ATmega328PB/328A/328P/328PA
-* Boboduino Uno R3 adapt the Atmega 328PB chip as the default processer, however this board can also support other 328 series chip if you like to replace it with other ones.
+## Supported microcontrollers(advanced user)
+* **Support [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) only**: The official Arudino Uno R3 adapt the Atmeag 328P chip, where Boboduino Uno R3 mount the [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) chip as the default processer, which is fully compatible with the official Arduino Uno R3 but with some more useful functions. 
+* **Chip replacement((: This board(and the bootloader core) can also support other 328 series chip with 32-TQFP package. You can replace it manually if you have your specific applicaion (To replace the chip, you will need a hot plate or hot gun and good skill)
+* **Bootloader core modificaion**: After you replace the chip, you can remove the comment of `328.menu.variant` in the **board.txt** file and restart the Arduino IDE. The option of other chip will now be seen in the pull-down menu of **Tool>variant**. 
 
-
+---
 
 ## Supported clock frequencies
-The original MiniCore botloader supports a variety of different clock frequencies. However, we restricted it to support only 16 MHz external crystal oscillator to avoid confusion for the beginner. 
+* **Support 16 MHz external crystal oscillator only**: The original MiniCore botloader supports a variety of different clock frequencies. However, we intended to restricted it to support only 16 MHz external crystal oscillator to avoid confusion of the selection for the beginner. 
+* You can replace the external oscillator with other frequency with the hot plate or hot gun.
+* The option of selection other frequency can be open by remove the comment of **328.menu.clock** in the file of  **board.txt**. 
+* You can see the option of other frequency at the pull-down menu of **Tool>Clock**. after you restart the Arduino IDE.
 
 ### Change to other frquency (advanced user)
 If you want to replace
