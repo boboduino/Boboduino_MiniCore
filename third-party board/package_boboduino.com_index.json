@@ -1,7 +1,7 @@
 {
   "packages": [
     {
-      "name": "Boboduino MiniCore AVR board",
+      "name": "Boboduino AVR board",
       "maintainer": "Boboduino",
       "websiteURL": "https://boboduino.com",
       "email": "support@boboduino.com",
