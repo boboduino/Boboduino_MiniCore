@@ -15,10 +15,10 @@
           "architecture": "avr",
           "version": "2.2.2",
           "category": "Contributed",
-          "url": "https://github.com/boboduino/test/raw/main/BOBODUINO-2.2.2.zip",
-          "archiveFileName": "BOBODUINO-2.2.2.zip",
+          "url": "https://github.com/boboduino/Boboduio_MiniCore/raw/master/third-party%20board/2.2.2/BOBODUINO_MiniCore_2.2.2.zip",
+          "archiveFileName": "BOBODUINO_MiniCore_2.2.2.zip",
           "checksum": "SHA-256:08cbad9aa1b390ee474118dd187aa02e2c6150ad556f29c55fcdadc51003ec8a",
-          "size": "602202",
+          "size": "32704",
           "boards": [
             {
               "name": "Boboduino Uno R3"
