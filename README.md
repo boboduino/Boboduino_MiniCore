@@ -229,16 +229,16 @@ Note that you have need to connect a programmer and hit **`Burn bootloader`** if
 # Advance functions
 
 
-## Printf function support
+## Printf() function support
 * Unlike the official Arduino cores, MiniCore has printf support out of the box. 
 * If you're not familiar with printf you should probably [read this first](https://www.tutorialspoint.com/c_standard_library/c_function_printf.htm). It's added to the Print class and will work with all libraries that inherit Print. 
-* Printf is a standard C function that lets you format text much easier than using Arduino's built-in print and println. Note that this implementation of printf will NOT print floats or doubles. 
+* Printf is a standard C function that lets you format text much easier than using Arduino's built-in print and println. **Note that this implementation of printf will NOT print floats or doubles**. 
 * This is a limitation of the avr-libc printf implementation on AVR microcontrollers, and nothing I can easily fix.
 * If you're using a serial port, simply use `Serial.printf("Milliseconds since start: %ld\n", millis());`. You can also use the `F()` macro if you need to store the string in flash. Other libraries that inherit the Print class (and thus supports printf) are the LiquidCrystal LCD library and the U8G2 graphical LCD library.
 
 
 ## Pin macros
-Note that you don't have to use the digital pin numbers to refer to the pins. You can also use some `predefined macros that maps "Arduino pins"` to the port and port number:
+Besides using the Arduino pre-defined digital pin numbers to refer to the pins, tou can also use some `predefined macros that maps "Arduino pins"` to the port and port number:
 
 ```c++
 // Use PIN_PB5 macro to refer to pin PB5 (Arduino pin 13)
@@ -249,7 +249,7 @@ digitalWrite(13, HIGH);
 
 ```
 
---
+---
 
 ## Directly flash memory writing 
 * Boboduino MiniCore uses Optiboot Flash, a bootloader that supports flash writing within the running application, thanks to the work of [@majekw](https://github.com/majekw).
