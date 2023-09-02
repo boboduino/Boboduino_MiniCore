@@ -17,8 +17,8 @@
           "category": "Contributed",
           "url": "https://github.com/boboduino/Boboduio_MiniCore/raw/master/third-party%20board/2.2.2/BOBODUINO_MiniCore_2.2.2.zip",
           "archiveFileName": "BOBODUINO_MiniCore_2.2.2.zip",
-          "checksum": "SHA-256:f0dc0e4dadd48be7748d804dfd3cd49dbd6f46118220248eae459d75a3fcc4e0",
-          "size": "21216",
+          "checksum": "SHA-256:1953479e8ac6dce69aafe5eaa1652a87e80ac94e6e0abac191246cf65413f938",
+          "size": "21920",
           "boards": [
             {
               "name": "Boboduino Uno R3"
