@@ -4,15 +4,21 @@
 **`Boboduino Uno R3`** is a microcontroller board that is compatible with the popular Arduino Uno R3 board. It is a versatile and feature-packed board that allows makers and developers to easily create and program various electronic projects. The board has multiple power input options, including a **`Type-C USB connector`**, a **`5V JST port`**, or a **`3.7V lithium battery connector`**, and features a **`5V/3.3V power source switch`**, giving users more flexibility in their design. By adapting the **`Atmega 328PB chip`**, the board also comes with extra IIC, serial, and SPI ports, allowing users to connect more devices and sensors. Boboduino has a unique and playful robot layout, making it a great gift idea for makers and tech enthusiasts.
 
 ---
-## What is Boboduino MiniCore?
-* An Arduino core modified from [MiniCore](https://github.com/MCUdude/MiniCore) for the Boboduino Uno R3 board, running a [custom version of Optiboot for increased functionality](#write-to-own-flash). This core requires at least Arduino IDE v1.8.13+. <br/>
+## What is Boboduino MiniCore
+* Boboduino MiniCore is an Arduino core modified from profound [MiniCore](https://github.com/MCUdude/MiniCore) tailored for the Boboduino Uno R3 board. 
+* It is a simplified version of MiniCore which make the options to choose McU other than the Atmega 328 series to be hidden.
+* Which we believed, it is much more suitable for both the Boboduino board and beginners.
+* However, once you have reach to the level of **`Bobo master`** and you want to tweak or explore more, you can always install the lovely [MiniCore](https://github.com/MCUdude/MiniCore). It can also be used with the Boboduino Uno R3 board.
 
-* If you're into "generic" AVR programming, I'm happy to tell you that all relevant keywords are being highlighted by the IDE through a separate keywords file. Make sure to test the [example files](https://github.com/MCUdude/MiniCore/tree/master/avr/libraries/AVR_examples/examples) (File > Examples > AVR C code examples). Try writing a register name, <i>DDRB</i> for instance, and see for yourself!
 ---
 
 # Table of contents
-** Ignore the advance part if you just  want to simply install the core**
-* [Supported microcontrollers(advanced)](#supported-microcontrollers)
+** Ignore the advance part if you just  want to simply install the core **
+* [System requirement](#system-requirement)
+* [How to install](#how-to-install)
+	- [Boards Manager Installation](#boards-manager-installation-(arduino-iDE))
+	- [Manual Installation](#manual-installation)
+	- [PlatformIO](#platformio)
 * [Supported clock frequencies(advanced)](#supported-clock-frequencies)
 * [Bootloader option](#bootloader-option)
 * [BOD option](#bod-option)
@@ -22,21 +28,25 @@
 * [Pin macros](#pin-macros)
 * [Write to own flash](#write-to-own-flash)
 * [Programmers](#programmers)
-* **[How to install](#how-to-install)**
-	- [Boards Manager Installation](#boards-manager-installation)
-	- [Manual Installation](#manual-installation)
-	- [PlatformIO](#platformio)
+
+* [Supported microcontrollers(advanced)](#supported-microcontrollers)
+
 * **[Getting started with MiniCore](#getting-started-with-minicore)**
 * [Wiring reference](#wiring-reference)
 * **[Pinout](#pinout)**
 * **[Minimal setup](#minimal-setup)**
 
 ---
+## System requirement
+* This core requires at least Arduino IDE **`v1.8.13+`**. <br/>
+* A computer with the installation of Windows, Mac OS or Linux.
+* A Boboduino Uno R3 board.
 
 
+---
 
 ## How to install
-### Arduino IDE Boards Manager Installation
+### Boards Manager Installation(Arduino IDE)
 This installation method requires Arduino IDE version v1.8.13+ or greater.
 * Open the Arduino IDE.
 * Open the **File > Preferences** menu item.
@@ -106,8 +116,8 @@ The modified fuse setting will be written to the burnt bootloader.
 
 
 
-## Supported microcontrollers(advanced user)
-* **Support [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) only**: The official Arudino Uno R3 adapt the Atmeag 328P chip, where Boboduino Uno R3 mount the [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) chip as the default processer, which is fully compatible with the official Arduino Uno R3 but with some more useful functions. 
+## Supported microcontrollers
+**Support [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) only**: The official Arudino Uno R3 adapt the Atmeag 328P chip, where Boboduino Uno R3 mount the [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) chip as the default processer, which is fully compatible with the official Arduino Uno R3 but with some more useful functions. 
 * **Chip replacement((: This board(and the bootloader core) can also support other 328 series chip with 32-TQFP package. You can replace it manually if you have your specific applicaion (To replace the chip, you will need a hot plate or hot gun and good skill)
 * **Bootloader core modificaion**: After you replace the chip, you can remove the comment of `328.menu.variant` in the **board.txt** file and restart the Arduino IDE. The option of other chip will now be seen in the pull-down menu of **Tool>variant**. 
 
@@ -263,3 +273,6 @@ Here is a simple schematic showing a minimal setup using an external crystal. Sk
 | DIP-28 package  *ATmega8/48/88/168/328*               | TQFP-32 SMD package  *ATmega8/48/88/168/328*          | TQFP-32 SMD package  *ATmega48/88/168/328PB*          |
 |-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|
 |<img src="https://i.imgur.com/1k4q3xF.png" width="280">|<img src="https://i.imgur.com/bp7KI9f.png" width="280">|<img src="https://i.imgur.com/LrEokO9.png" width="280">|
+
+## Generic AVR programming
+* If you're into "generic" AVR programming, I'm happy to tell you that all relevant keywords are being highlighted by the IDE through a separate keywords file. Make sure to test the [example files](https://github.com/MCUdude/MiniCore/tree/master/avr/libraries/AVR_examples/examples) (File > Examples > AVR C code examples). Try writing a register name, <i>DDRB</i> for instance, and see for yourself!
