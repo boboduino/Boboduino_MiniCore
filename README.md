@@ -16,7 +16,7 @@
 ** Ignore the advance part if you just  want to simply install the core **
 * [System requirement](#system-requirement)
 * [How to install](#how-to-install)
-	- [Boards Manager Installation](#boards-manager-installation-(arduino-iDE))
+	- [Boards Manager Installation](#boards-manager-installatin-(arduino-ide))
 	- [Manual Installation](#manual-installation)
 	- [PlatformIO](#platformio)
 * [Supported clock frequencies(advanced)](#supported-clock-frequencies)
