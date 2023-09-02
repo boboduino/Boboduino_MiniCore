@@ -11,7 +11,7 @@
       "platforms": [
     
         {
-          "name": "Boboduino",
+          "name": "MiniCore",
           "architecture": "avr",
           "version": "2.2.2",
           "category": "Contributed",
@@ -31,7 +31,7 @@
               "version": "7.3.0-atmel3.6.1-arduino7"
             },
             {
-              "packager": "Boboduino",
+              "packager": "MiniCore",
               "name": "avrdude",
               "version": "7.1-arduino.1"
             },
