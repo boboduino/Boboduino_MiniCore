@@ -1,10 +1,11 @@
 # Boboduino MiniCore
 [![Build Status](https://travis-ci.com/MCUdude/MiniCore.svg?branch=master)](https://travis-ci.com/MCUdude/MiniCore) [![MiniCore forum thread](https://img.shields.io/badge/support-forum-blue.svg)](https://forum.arduino.cc/index.php?topic=412070.0)
+
 ## What is Boboduino Uno R3?
 **`Boboduino Uno R3`** is a microcontroller board that is compatible with the popular Arduino Uno R3 board. It is a versatile and feature-packed board that allow makers and developers to easily create and program various electronic projects. The board has multiple power input options, including a **`Type-C USB connector`**, a **`5V JST port`**, or a **`3.7V lithium battery connector`**, and features a **`5V/3.3V power source switch`**, giving users more flexibility in their design. By adapting the **`Atmega 328PB chip`**, the board also comes with extra IIC, serial, and SPI ports, allowing users to connect more devices and sensors. Boboduino has a unique and playful robot layout, making it a great gift idea for makers and tech enthusiasts.
 
 ---
-## What is Boboduino MiniCore
+## What is Boboduino MiniCore?
 * Boboduino MiniCore is an Arduino core modified from profound [MiniCore](https://github.com/MCUdude/MiniCore) tailored for the Boboduino Uno R3 board. 
 * It is basically a simplified version of MiniCore which make the options to choose McU other than the Atmega 328 series to be hidden.It is much more suitable for both the Boboduino board and beginners.
 * Once you have reach to the level of **`Bobo master`** and you want to tweak or explore more, you can always install the lovely [MiniCore](https://github.com/MCUdude/MiniCore). It can also be used with the Boboduino Uno R3 board.
@@ -70,7 +71,7 @@ This installation method requires Arduino IDE version v1.8.13+ or greater.
   - Make sure the latest version is installed and selected
   - Close the **Boards Manager** window.
 
-### Manual Installation (Arduino IDE)
+### Manual Core Installation (Arduino IDE)
 * Download the core file of [BOBODUINO_MiniCore_2.2.2.zip](https://github.com/boboduino/Boboduio_MiniCore/raw/master/third-party%20board/2.2.2/BOBODUINO_MiniCore_2.2.2.zip).
 * Exctract the ZIP file, and move the extracted folder to the location:
     * Windows: `"~/Documents/Arduino/hardware"`. Create the "hardware" folder if it doesn't exist.
@@ -81,8 +82,8 @@ This installation method requires Arduino IDE version v1.8.13+ or greater.
 ## PlatformIO
 * [PlatformIO IDE](https://platformio.org/platformio-ide) is an open source ecosystem for embedding sytem development which is build built on top of Microsoft's [Visual Studio Code](https://code.visualstudio.com)
 * Compared to Arduino IDE, it is much more powerful with the debugging features.
-* We hightly recommand you to used it, if you are planning to build more complex program.
-* Please have a look of [PlatformIO.md](https://github.com/boboduino/Boboduio_MiniCore/blob/master/PlatformIO.md) for more information.
+* We hightly recommand you to used it when you are planning to build more complex projects.
+* Please take a look at [PlatformIO.md](https://github.com/boboduino/Boboduio_MiniCore/blob/master/PlatformIO.md) for more information.
 
 ---
 
@@ -96,7 +97,7 @@ you can upload your code in two ways:
     * RX and TX pins are swapped, 
     * The auto reset circuity isn't working properly (Check if the Auto-reset JP3 solder jumper at the back of the board has been solder and connected).
 
-## Uplaod through external programmer 
+### Uplaod through external programmer 
 * You can burning sketches to the Arduino board with an external programmer.
 * This method bypass the bootloader, which can saving program space on the chip.
 * Use the option **Sketch > Upload Using Programmer**, this will erase the bootloader and upload your code using the programmer tool.
@@ -105,39 +106,50 @@ you can upload your code in two ways:
 Your code should now be running on your microcontroller! If you experience any issues related to bootloader burning or serial uploading, please use *[this forum post](https://forum.arduino.cc/index.php?topic=412070.0)* or create an issue on Github.
 
 ---
-## Bootloader settings
 
 
 
-## Re-write the Boboduino bootloader(Advanced)
-The Boboduino MiniCore bootloader has **DEFAULTLY** been written to your board. However, if you want to re-write the booloader, here's a quick guide you can follow:
+# Bootloader settings **`[Advanced]`**
+The Boboduino MiniCore bootloader has **DEFAULTLY** been written to your board. However, if you want to re-write the booloader, here's a quick guide you can follow.
+
+
+## Understand the bootloader setting **`[Advanced]`**
 * Connect your Boboduino Uno R3 microcontroller board with the [Arduino as ISP uploader](https://docs.arduino.cc/built-in-examples/arduino-isp/ArduinoISP) or other ICSP uploading board.
 * Open the **Tools > Board** menu item, and select `"Boboduino AVR boards"` and `""Boboduino Uno R3"`.
 
-Adjust the fuse setting from the drop-down menu of  `[Tool]`
-* **BOD**:  If the *BOD option* is presented, you can select at what voltage the microcontroller will shut down at. Read more about BOD [here](#bod-option).
-* **Clock**: Select your prefered clock frequency. **16 MHz** is standard on most Arduino boards, including the Arduino UNO.
-* **Variants**: If the *Variants* option is presented, you'll have to specify what version of the microcontroller you're using. E.g the ATmega328 and the ATmega328P got different device signatures, so selecting the wrong one will result in an error.
-* **Programmer**: Select what kind of programmer you're using under the **Programmers** menu.(For example if you use the [Arduino as ISP](https://docs.arduino.cc/built-in-examples/arduino-isp/ArduinoISP) then just select it!)
-* **Burn Bootloader**: Hit **Burn Bootloader**. If an LED is connected to pin PB5 (Arduino pin 13), it should flash twice every second.
+You can adjust the fuse setting from the drop-down menu of  `[Tool]` in yor Arduino IDE. 
+* **`[Clock]`**: The clock frequency which the McU is running at. **16 MHz** is standard on Boboduino and most of official Arduino boards. [[Clock]](#clock-running-clock-frequency)
+* **`[BOD]`**:  **Brown out detection voltage**, the voltage that microcontroller will shut down at. ([BOD](#bod-option)).
+* **`[EEPROM]`**: Wheather to remove the data store in the EEPROM or not. Choose **EEPROM not retained** when you want to cleanup the EEPROM after upload the bootloader. [[EEPROM]]()
+* **`[Compiler LTO]`**: Wheather to use the **link time opertimization(LTO)**. LTO optimizes the code at link time, making the code (often) significantly smaller without making it "slower". [[LTO]]()
+* **`[Variants]`**: Which microcontroller chip you're using. Boboduino Uno R3 adapt the ATmega 328PB chip.[[Variants]]()
+* `**[Bootloader]**`: Which UART(UART0 or UART1) port you want to use to uplaod the code. [[Bootloader]]()
+
+## Re-write the bootloader **`[Advanced]`**
+1. Select the programmer: The programmer is the device that you can use to write the bootloader to your board. Select which programmer you're using under the **`[Programmers]`** menu.(For example if you use the [Arduino as ISP](https://docs.arduino.cc/built-in-examples/arduino-isp/ArduinoISP) then just select it!)
+2. Burn Bootloader: Hit **`[Burn Bootloader]`**. If an LED is connected to pin PB5 (Arduino pin 13), it should flash twice every second.
 The modified fuse setting will be written to the burnt bootloader.
+---
 
+## Detail bootloader setting
+### [Variants] Supported microcontrollers
+* Arudino Uno R3 adapt the ATmega 328P chip, where Boboduino Uno R3 mount the slightly advance [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) chip as the default processer, which is fully compatible with the official Arduino Uno R3 but with some more useful functions. 
+* The official MiniCore support lots of ATmega chips. However, we slimmed the function of this part beacuse Boboduino can only use the ATmega 328 series chip.
 
+* Hence, You can only see the option of [ATmega 328PB chip](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) in the menu of **`[Variants]`** .
 
-
-## [Variants] Supported microcontrollers
-**Support [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) only**: The official Arudino Uno R3 adapt the Atmeag 328P chip, where Boboduino Uno R3 mount the [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) chip as the default processer, which is fully compatible with the official Arduino Uno R3 but with some more useful functions. 
-* **Chip replacement((: This board(and the bootloader core) can also support other 328 series chip with 32-TQFP package. You can replace it manually if you have your specific applicaion (To replace the chip, you will need a hot plate or hot gun and good skill)
-* **Bootloader core modificaion**: After you replace the chip, you can remove the comment of `328.menu.variant` in the **board.txt** file and restart the Arduino IDE. The option of other chip will now be seen in the pull-down menu of **Tool>variant**. 
+### Chip replacement **`[Advanced]`**
+* Chip replacement: For advance user, this 328PB chip can also be replaced with other 328 series chip with 32-TQFP package.  To replace the chip, you will need a hot plate or hot gun, soldering paste, and good skill. :-)
+* **Bootloader core modificaion**: After you replace the chip, you can remove the comment of `328.menu.variant` in the **board.txt** file of Boboduino MiniCore  and restart the Arduino IDE. The option of other 328 chip will now be seen in the pull-down menu of **Tool>variant**. 
 
 ---
 
-## Supported clock frequencies
-* This board adpot the **16 MHz** external crystal oscillator. Which is the same as the Arduino Uno R3. 
+### [Clock] Running Clock Freqeuency 
+ *This board adpot the **16 MHz** external crystal oscillator. Which is the same as the Arduino Uno R3. 
 * The original MiniCore botloader supports a variety of different clock frequencies. However, we intended to restricted it to support only 16 MHz external crystal oscillator to avoid confusion of the options for the beginner.
 
 
-### Change clock frquency (advanced)
+### Change clock frquency **`[advanced]`**
 * You can replace(or remove) the external crystal oscillator with other frequency with the hot plate or hot gun.
 * The option of selection other frequency can be turn on by remove the comment of **328.menu.clock** in the file of  **board.txt**. 
 * After you remove the commant and restart the Arduino IDE, you can see the option of other frequency at the pull-down menu of **Tool>Clock**.
@@ -171,12 +183,11 @@ The modified fuse setting will be written to the burnt bootloader.
 | 1 MHz       | Internal oscillator         | Derived from the 8 MHz internal oscillator                    |
 
 
-## Bootloader option
+## [Bootloader] Which UART port to upload the bootloader? 
 * Boboduino Uno board support upload the code with `UART0` with the default setting(Which is the same as the offical Arduino Uno R3).
-### Remove the bootloader **`[advnced]`**
+### Erase the bootloader **`[advnced]`**
 
-
-* If your application doesn't need or require a bootloader for uploading code you can also choose to disable this by selecting *No bootloader*. This frees 512 bytes of flash memory.
+* If your application doesn't need or require a bootloader for uploading code you can also choose to disable this by selecting *No bootloader*. This frees **512 bytes** of flash memory.
 * Unlike official Arduino AVR boards, the bootloader isn't automatically removed when you upload using a programmer. You'll have to select *No bootloader* hit "upload" or the "burn bootloader" for this to happen.
     
 ### Upload code with UART1 **`[advanced]`**
@@ -215,7 +226,10 @@ Note that you have need to connect a programmer and hit **`Burn bootloader`** if
 * If you want to read more about LTO and GCC flags in general, head over to the [GNU GCC website](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)!
 
 
-## Printf support
+# Advance functions
+
+
+## Printf function support
 * Unlike the official Arduino cores, MiniCore has printf support out of the box. 
 * If you're not familiar with printf you should probably [read this first](https://www.tutorialspoint.com/c_standard_library/c_function_printf.htm). It's added to the Print class and will work with all libraries that inherit Print. 
 * Printf is a standard C function that lets you format text much easier than using Arduino's built-in print and println. Note that this implementation of printf will NOT print floats or doubles. 
@@ -235,24 +249,27 @@ digitalWrite(13, HIGH);
 
 ```
 
+--
 
-## Write to own flash
+## Directly flash memory writing 
 * Boboduino MiniCore uses Optiboot Flash, a bootloader that supports flash writing within the running application, thanks to the work of [@majekw](https://github.com/majekw).
 * This means that content from e.g. a sensor can be stored in the flash memory directly without the need of external memory. 
-* **Flash memory is much faster than EEPROM**, and can handle at least 10,000 write cycles before wear becomes an issue.
+* **Flash memory is much faster than EEPROM**, and can handle at least **10,000 write cycles** before wear becomes an issue.
 *For more information on how it works and how you can use this in you own application, check out the [Serial_read_write](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Serial_read_write/Serial_read_write.ino) for a simple proof-of-concept demo, and
 [Flash_put_get](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Flash_put_get/Flash_put_get.ino) + [Flash_iterate](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Flash_iterate/Flash_iterate.ino) for useful examples on how you can store strings, structs and variables to flash and retrieve then afterwards.
 The [Read_write_without_buffer](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Read_write_without_buffer/Read_write_without_buffer.ino) example demonstrate how you can read and write to the flash memory on a lower level without using a RAM buffer.
 
+---
 
-## Programmers(Advanced)
-MiniCore adds its own copies of all the standard programmers to the "Programmer" menu. Just select one of the stock programmers in the "Programmers" menu, and you're ready to "Burn Bootloader" or "Upload Using Programmer".
+## Programmers **`[Advanced]`**
+* The official MiniCore adds its own copies of all the standard programmers to the "Programmer" menu. Just select one of the programmer in the "Programmers" menu, and you're ready to "Burn Bootloader" or "Upload Using Programmer".
 
-Select your microcontroller in the boards menu, then select the clock frequency. You'll have to hit "Burn bootloader" in order to set the correct fuses and upload the correct bootloader. <br/>
-Make sure you connect an ISP programmer, and select the correct one in the "Programmers" menu. For time critical operations an external oscillator is recommended.
+* To upload the bootloader, after youelect your microcontroller in the **`[boards]`** menu, then select the clock frequency. You'll have to hit "Burn bootloader" in order to set the correct fuses and upload the correct bootloader. <br/>
+* Make sure you connect an ISP programmer, and select the correct one in the "Programmers" menu. For time critical operations an external oscillator is recommended.
 
-## Wiring reference
-To extend this core's functionality a bit further, I've added a few missing Wiring functions. As many of you know Arduino is based on Wiring, but that doesn't mean the Wiring development isn't active. These functions are used as "regular" Arduino functions, and there's no need to include an external library.<br/>
+---
+# Wiring reference
+To extend this core's functionality a bit further, The original MiniCore has add a few missing Wiring functions. These functions can be used as "regular" Arduino functions, and there's no need to include an external library.<br/>
 I hope you find this useful, because they really are!
 
 ### Function list
@@ -268,8 +285,14 @@ I hope you find this useful, because they really are!
 ### For further information please view the [Wiring reference page](https://github.com/MCUdude/MiniCore/blob/master/Wiring_reference.md)!
 
 
-## Pinout
-This core uses the standard Arduino UNO pinout and will not break compatibility of any existing code or libraries. What's different about this pinout compared to the original one is that this got three aditinal IO pins available. You can use digital pin 20 and 21 (PB6 and PB7) as regular IO pins if you're ussing the internal oscillator instead of an external crystal. If you're willing to disable the reset pin (can be enabled using [high voltage parallel programming](https://www.microchip.com/webdoc/stk500/stk500.highVoltageProgramming.html)) it can be used as a regular IO pin, and is assigned to digital pin 22 (PC6).
+# Design your own board **`[Advanced]`**
+Once in the future, you may want to develop your own print circuit board for specific application. Here are some information which may help you to startup your circuit design journey.
+
+## Chip diagram
+* The diagram below may help you to quickly know what are the function of each pins of each chip.
+* The MinicCore uses the standard Arduino UNO pinout and will not break compatibility of any existing code or libraries. What's different about this pinout compared to the original one is that this got three aditinal IO pins available. 
+* You can use digital pin 20 and 21 (PB6 and PB7) as regular IO pins if you're ussing the internal oscillator instead of an external crystal. If you're willing to disable the reset pin (can be enabled using [high voltage parallel programming](https://www.microchip.com/webdoc/stk500/stk500.highVoltageProgramming.html)) it can be used as a regular IO pin, and is assigned to digital pin 22 (PC6).
+
 <b>Click to enlarge:</b>
 </br> </br>
 
@@ -278,12 +301,17 @@ This core uses the standard Arduino UNO pinout and will not break compatibility 
 |<img src="https://i.imgur.com/qXIEchT.jpg" width="280">|<img src="https://i.imgur.com/naweqE6.jpg" width="260">|<img src="https://i.imgur.com/ZQsjLwL.jpg" width="260">|
 
 
-## Minimal setup
-Here is a simple schematic showing a minimal setup using an external crystal. Skip the crystal and the two 22pF capacitors if you're using the internal oscillator. If you don't want to mess with breadboards, components and wiring; simply use your Arduino UNO! <b>Click to enlarge:</b> <br/>
+## Minimal setup circutry **`[Advanced]`**
+
+* Here is a simple schematic showing a minimal setup using an external crystal. 
+* Skip the crystal and the two 22pF capacitors if you're using the internal oscillator. 
+* <b>Click to enlarge:</b> <br/>
 
 | DIP-28 package  *ATmega8/48/88/168/328*               | TQFP-32 SMD package  *ATmega8/48/88/168/328*          | TQFP-32 SMD package  *ATmega48/88/168/328PB*          |
 |-------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|
 |<img src="https://i.imgur.com/1k4q3xF.png" width="280">|<img src="https://i.imgur.com/bp7KI9f.png" width="280">|<img src="https://i.imgur.com/LrEokO9.png" width="280">|
 
-## Generic AVR programming
-* If you're into "generic" AVR programming, I'm happy to tell you that all relevant keywords are being highlighted by the IDE through a separate keywords file. Make sure to test the [example files](https://github.com/MCUdude/MiniCore/tree/master/avr/libraries/AVR_examples/examples) (File > Examples > AVR C code examples). Try writing a register name, <i>DDRB</i> for instance, and see for yourself!
+---
+
+# Generic AVR programming
+* As I konw, most of user use Arduino IDE and Platform IO for most of their job. However, if you're into "generic" AVR programming, I'm happy to tell you that all relevant keywords are being highlighted by the IDE through a separate keywords file. Make sure to test the [example files](https://github.com/MCUdude/MiniCore/tree/master/avr/libraries/AVR_examples/examples) (File > Examples > AVR C code examples). Try writing a register name, <i>DDRB</i> for instance, and see for yourself!
