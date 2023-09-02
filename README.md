@@ -16,8 +16,8 @@
 ** Ignore the advance part if you just  want to simply install the core **
 * [System requirement](#system-requirement)
 * [How to install](#how-to-install)
-	- [Boards Manager Installation](#boards-manager-installationarduino-ide)
-	- [Manual Installation](#manual-installation)
+	- [Boards Manager Installation (Arduino IDE)](#boards-manager-installation-arduino-ide)
+	- [Manual Installation (Arduino IDE)](#manual-installation)
 	- [PlatformIO](#platformio)
 * [Supported clock frequencies(advanced)](#supported-clock-frequencies)
 * [Bootloader option](#bootloader-option)
@@ -46,7 +46,7 @@
 ---
 
 ## How to install
-### Boards Manager Installation(Arduino IDE)
+### Boards Manager Installation (Arduino IDE)
 This installation method requires Arduino IDE version v1.8.13+ or greater.
 * Open the Arduino IDE.
 * Open the **File > Preferences** menu item.
