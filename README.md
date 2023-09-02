@@ -1,33 +1,35 @@
 # Boboduino MiniCore
 [![Build Status](https://travis-ci.com/MCUdude/MiniCore.svg?branch=master)](https://travis-ci.com/MCUdude/MiniCore) [![MiniCore forum thread](https://img.shields.io/badge/support-forum-blue.svg)](https://forum.arduino.cc/index.php?topic=412070.0)
 ## What is Boboduino Uno R3?
-**`Boboduino Uno R3`** is a microcontroller board that is compatible with the popular Arduino Uno R3 board. It is a versatile and feature-packed board that allows makers and developers to easily create and program various electronic projects. The board has multiple power input options, including a **`Type-C USB connector`**, a **`5V JST port`**, or a **`3.7V lithium battery connector`**, and features a **`5V/3.3V power source switch`**, giving users more flexibility in their design. By adapting the **`Atmega 328PB chip`**, the board also comes with extra IIC, serial, and SPI ports, allowing users to connect more devices and sensors. Boboduino has a unique and playful robot layout, making it a great gift idea for makers and tech enthusiasts.
+**`Boboduino Uno R3`** is a microcontroller board that is compatible with the popular Arduino Uno R3 board. It is a versatile and feature-packed board that allow makers and developers to easily create and program various electronic projects. The board has multiple power input options, including a **`Type-C USB connector`**, a **`5V JST port`**, or a **`3.7V lithium battery connector`**, and features a **`5V/3.3V power source switch`**, giving users more flexibility in their design. By adapting the **`Atmega 328PB chip`**, the board also comes with extra IIC, serial, and SPI ports, allowing users to connect more devices and sensors. Boboduino has a unique and playful robot layout, making it a great gift idea for makers and tech enthusiasts.
 
 ---
 ## What is Boboduino MiniCore
 * Boboduino MiniCore is an Arduino core modified from profound [MiniCore](https://github.com/MCUdude/MiniCore) tailored for the Boboduino Uno R3 board. 
-* It is a simplified version of MiniCore which make the options to choose McU other than the Atmega 328 series to be hidden.
-* Which we believed, it is much more suitable for both the Boboduino board and beginners.
-* However, once you have reach to the level of **`Bobo master`** and you want to tweak or explore more, you can always install the lovely [MiniCore](https://github.com/MCUdude/MiniCore). It can also be used with the Boboduino Uno R3 board.
+* It is basically a simplified version of MiniCore which make the options to choose McU other than the Atmega 328 series to be hidden.It is much more suitable for both the Boboduino board and beginners.
+* Once you have reach to the level of **`Bobo master`** and you want to tweak or explore more, you can always install the lovely [MiniCore](https://github.com/MCUdude/MiniCore). It can also be used with the Boboduino Uno R3 board.
 
 ---
 
 # Table of contents
-** Ignore the advance part if you just  want to simply install the core **
+** Ignore the advance part if you just want to simply install the core for microcontroller learning**
 * [System requirement](#system-requirement)
 * [How to install](#how-to-install)
 	- [Boards Manager Installation (Arduino IDE)](#boards-manager-installation-arduino-ide)
-	- [Manual Installation (Arduino IDE)](#manual-installation)
-	- [PlatformIO](#platformio)
-* [Supported clock frequencies(advanced)](#supported-clock-frequencies)
-* [Bootloader option](#bootloader-option)
-* [BOD option](#bod-option)
-* [EEPROM retain option](#eeprom-option)
-* [Link time optimization / LTO](#link-time-optimization--lto)
-* [Printf support](#printf-support)
-* [Pin macros](#pin-macros)
-* [Write to own flash](#write-to-own-flash)
-* [Programmers](#programmers)
+	- [Manual Installation (Arduino IDE)](#manual-installation-arduino-ide)
+	- [PlatformIO IDE](#platformio)
+* [Bootloader fuse settings(advanced)](bootloader-fuse-settings)
+    * [Clock](#supported-clock-frequencies)
+    * [BOD option](#bod-option)
+    * [EEPROM](#eeprom-option)
+    * [Compiler LTO](#link-time-optimization--lto)
+    * [Variant]()
+    * [Bootloader](#bootloader-option)
+* Advance functions
+    * [Printf support](#printf-support)
+    * [Pin macros](#pin-macros)
+    * [Flash writing supports](#write-to-own-flash)
+    * [Programmers](#programmers)
 
 * [Supported microcontrollers(advanced)](#supported-microcontrollers)
 
@@ -38,9 +40,9 @@
 
 ---
 ## System requirement
-* This core requires at least Arduino IDE **`v1.8.13+`**. <br/>
+* This core requires Arduino IDE **`v1.8.13+`**.  
 * A computer with the installation of Windows, Mac OS or Linux.
-* A Boboduino Uno R3 board.
+* A cute Boboduino Uno R3 board :-).
 
 
 ---
@@ -68,22 +70,26 @@ This installation method requires Arduino IDE version v1.8.13+ or greater.
   - Make sure the latest version is installed and selected
   - Close the **Boards Manager** window.
 
-### Arduino IDE Manual Installation
+### Manual Installation (Arduino IDE)
 * Download the core file of [BOBODUINO_MiniCore_2.2.2.zip](https://github.com/boboduino/Boboduio_MiniCore/raw/master/third-party%20board/2.2.2/BOBODUINO_MiniCore_2.2.2.zip).
 * Exctract the ZIP file, and move the extracted folder to the location:
     * Windows: `"~/Documents/Arduino/hardware"`. Create the "hardware" folder if it doesn't exist.
     * Mac: `"/Users/cheney/Library/Arduino15/packages"`
 * Open Arduino IDE, and a new category in the boards menu called `"Boboduino AVR boards"` will show up.
 
+---
 ## PlatformIO
-* [PlatformIO](http://platformio.org) is an open source ecosystem for IoT development and supports MiniCore.
-* See [PlatformIO.md](https://github.com/boboduino/Boboduio_MiniCore/blob/master/PlatformIO.md) for more information.
+* [PlatformIO IDE](https://platformio.org/platformio-ide) is an open source ecosystem for embedding sytem development which is build built on top of Microsoft's [Visual Studio Code](https://code.visualstudio.com)
+* Compared to Arduino IDE, it is much more powerful with the debugging features.
+* We hightly recommand you to used it, if you are planning to build more complex program.
+* Please have a look of [PlatformIO.md](https://github.com/boboduino/Boboduio_MiniCore/blob/master/PlatformIO.md) for more information.
 
+---
 
 ## Code uploading
 you can upload your code in two ways:
 
-## Upload through USB
+### Upload through USB
 * Connect a USB to serial adapter to the microcontroller
 * Select the correct `serial port device` under the **Tools>Port** menu, and click the **Upload** button. 
 * If you're getting some kind of timeout error, it may be because:
@@ -99,6 +105,9 @@ you can upload your code in two ways:
 Your code should now be running on your microcontroller! If you experience any issues related to bootloader burning or serial uploading, please use *[this forum post](https://forum.arduino.cc/index.php?topic=412070.0)* or create an issue on Github.
 
 ---
+## Bootloader settings
+
+
 
 ## Re-write the Boboduino bootloader(Advanced)
 The Boboduino MiniCore bootloader has **DEFAULTLY** been written to your board. However, if you want to re-write the booloader, here's a quick guide you can follow:
@@ -116,7 +125,7 @@ The modified fuse setting will be written to the burnt bootloader.
 
 
 
-## Supported microcontrollers
+## [Variants] Supported microcontrollers
 **Support [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) only**: The official Arudino Uno R3 adapt the Atmeag 328P chip, where Boboduino Uno R3 mount the [ATmega328PB](https://www.mouser.com/ProductDetail/Microchip-Technology/ATMEGA328PB-AU?qs=jy4bLUHv09hbFONgGrqPbw%3D%3D&_gl=1*1i96pqq*_ga*MTAwNDU1Njk3OC4xNjkzNTQ4NDg2*_ga_15W4STQT4T*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4wLjAuMA..*_ga_1KQLCYKRX3*MTY5MzU0ODQ4Ni4xLjEuMTY5MzU0ODUxNS4zMS4wLjA.) chip as the default processer, which is fully compatible with the official Arduino Uno R3 but with some more useful functions. 
 * **Chip replacement((: This board(and the bootloader core) can also support other 328 series chip with 32-TQFP package. You can replace it manually if you have your specific applicaion (To replace the chip, you will need a hot plate or hot gun and good skill)
 * **Bootloader core modificaion**: After you replace the chip, you can remove the comment of `328.menu.variant` in the **board.txt** file and restart the Arduino IDE. The option of other chip will now be seen in the pull-down menu of **Tool>variant**. 
@@ -164,11 +173,13 @@ The modified fuse setting will be written to the burnt bootloader.
 
 ## Bootloader option
 * Boboduino Uno board support upload the code with `UART0` with the default setting(Which is the same as the offical Arduino Uno R3).
-### Remove the bootloader(advanced)
+### Remove the bootloader **[advnced]**
+
+
 * If your application doesn't need or require a bootloader for uploading code you can also choose to disable this by selecting *No bootloader*. This frees 512 bytes of flash memory.
 * Unlike official Arduino AVR boards, the bootloader isn't automatically removed when you upload using a programmer. You'll have to select *No bootloader* hit "upload" or the "burn bootloader" for this to happen.
     
-### Upload code with UART1(advanced)
+### Upload code with UART1 **[advanced]**
 * 328PB chip has two UART port, `UART0`, `UART1`. 
 * `UART0` is the default port for this board(Which is the same as the official Arduino Uno R3).
 * To turn on the UART1 code uploading function, you can remove the comment of `328.menu.bootloader.uart1` in the **board.txt** file. 
@@ -179,7 +190,7 @@ Note that you have need to connect a programmer and hit **`Burn bootloader`** if
 
 
 
-## BOD option(advanced)
+## [BOD] Brown down detection
 * `**Brown out detection**`, or BOD for short lets the microcontroller sense the input voltage and shut down if the voltage goes below the brown out setting. 
 * Like the official Arduino Uno R3, the default setting of brown out detection voltage has to be set to `**2.7v**`.
 * To change the BOD settings you'll have to connect an ISP programmer and hit "Burn bootloader". Below is a table that shows the available BOD options:
@@ -189,12 +200,12 @@ Note that you have need to connect a programmer and hit **`Burn bootloader`** if
     * Disabled
 
 
-## EEPROM option(advanced)
+## [EEEPROM] EEPROM erasure
 * If you want the EEPROM to be erased every time you burn the bootloader or upload using a programmer, you can turn off this option. 
 * You'll have to connect an ISP programmer and hit "Burn bootloader" to enable or disable EEPROM retain. Note that when uploading using a bootloader, the EEPROM will always be retained.
 
 
-## Link time optimization / LTO
+## [Compiler LTO] Link time optimization
 * After Arduino IDE 1.6.11 where released, There have been support for link time optimization or LTO for short. 
 * The LTO optimizes the code at link time, making the code (often) significantly smaller without making it "slower".
 * In Arduino IDE 1.6.11 and newer LTO is **enabled by default**.
