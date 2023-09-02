@@ -21,16 +21,15 @@
 extern "C" void __cxa_pure_virtual(void) __attribute__ ((__noreturn__));
 extern "C" void __cxa_deleted_virtual(void) __attribute__ ((__noreturn__));
 
-namespace std {
-  [[gnu::weak, noreturn]] void terminate() {
-    abort();
-  }
-}
-
 void __cxa_pure_virtual(void) {
-  std::terminate();
+  // We might want to write some diagnostics to uart in this case
+  //std::terminate();
+  abort();
 }
 
 void __cxa_deleted_virtual(void) {
-  std::terminate();
+  // We might want to write some diagnostics to uart in this case
+  //std::terminate();
+  abort();
 }
+

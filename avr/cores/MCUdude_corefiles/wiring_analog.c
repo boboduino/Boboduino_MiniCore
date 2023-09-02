@@ -43,6 +43,7 @@ void analogReference(uint8_t mode)
 
 int analogRead(uint8_t pin)
 {
+  uint8_t low, high;
 
 // Macro located in the pins_arduino.h file
 #ifdef analogPinToChannel
@@ -71,19 +72,27 @@ int analogRead(uint8_t pin)
   // without a delay, we seem to read from the wrong channel
   //delay(1);
 
-#if defined(ADCSRA) && defined(ADC)
+#if defined(ADCSRA) && defined(ADCL)
   // start the conversion
   ADCSRA |= _BV(ADSC);
 
   // ADSC is cleared when the conversion finishes
-  while (ADCSRA & _BV(ADSC)) {};
+  while (ADCSRA & _BV(ADSC));
 
-  // ADC macro takes care of reading ADC register.
- 	// avr-gcc implements the proper reading order: ADCL is read first.
- 	return ADC;
+  // we have to read ADCL first; doing so locks both ADCL
+  // and ADCH until ADCH is read.  reading ADCL second would
+  // cause the results of each conversion to be discarded,
+  // as ADCL and ADCH would be locked when it completed.
+  low  = ADCL;
+  high = ADCH;
 #else
-  return 0;
+  // we dont have an ADC, return 0
+  low  = 0;
+  high = 0;
 #endif
+
+  // combine the two bytes
+  return (high << 8) | low;
 }
 
 
@@ -297,3 +306,4 @@ void analogWrite(uint8_t pin, int val)
     }
   }
 }
+
