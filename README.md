@@ -173,13 +173,13 @@ The modified fuse setting will be written to the burnt bootloader.
 
 ## Bootloader option
 * Boboduino Uno board support upload the code with `UART0` with the default setting(Which is the same as the offical Arduino Uno R3).
-### Remove the bootloader **[advnced]**
+### Remove the bootloader **`[advnced]`**
 
 
 * If your application doesn't need or require a bootloader for uploading code you can also choose to disable this by selecting *No bootloader*. This frees 512 bytes of flash memory.
 * Unlike official Arduino AVR boards, the bootloader isn't automatically removed when you upload using a programmer. You'll have to select *No bootloader* hit "upload" or the "burn bootloader" for this to happen.
     
-### Upload code with UART1 **[advanced]**
+### Upload code with UART1 **`[advanced]`**
 * 328PB chip has two UART port, `UART0`, `UART1`. 
 * `UART0` is the default port for this board(Which is the same as the official Arduino Uno R3).
 * To turn on the UART1 code uploading function, you can remove the comment of `328.menu.bootloader.uart1` in the **board.txt** file. 
