@@ -1,7 +1,7 @@
 {
   "packages": [
     {
-      "name": "Boboduino AVR board",
+      "name": "Boboduino",
       "maintainer": "Boboduino",
       "websiteURL": "https://boboduino.com",
       "email": "support@boboduino.com",
