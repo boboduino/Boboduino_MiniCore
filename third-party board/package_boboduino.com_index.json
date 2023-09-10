@@ -1,12 +1,12 @@
 {
   "packages": [
     {
-      "name": "Boboduino",
-      "maintainer": "Boboduino",
-      "websiteURL": "https://boboduino.com",
-      "email": "support@boboduino.com",
+      "name": "MiniCore",
+      "maintainer": "MCUdude",
+      "websiteURL": "https://github.com/MCUdude/MiniCore",
+      "email": "",
       "help": {
-        "online": "https://github.com/MCUdude/MiniCore/issues"
+        "online": "https://forum.arduino.cc/index.php?topic=412070"
       },
       "platforms": [
     
