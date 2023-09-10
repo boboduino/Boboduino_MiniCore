@@ -1,8 +1,8 @@
 Boboduino MiniCore
 ==================
 
-<https://travis-ci.com/MCUdude/MiniCore>
-<https://forum.arduino.cc/index.php?topic=412070.0>
+<https://travis-ci.com/MCUdude/MiniCore
+https://forum.arduino.cc/index.php?topic=412070.0>
 
 What is Boboduino Uno R3?
 -------------------------
@@ -53,9 +53,8 @@ Open the Arduino IDE. \* Open the **File \> Preferences** menu item. \* Enter
 the following URL in **Additional Boards Manager URLs**:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
 https://raw.githubusercontent.com/boboduino/Boboduino_MiniCore/master/third-party%20board/package_boboduino_com_index.json
-```
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -   Open the **Tools \> Board \> Boards Manager...** menu item.
@@ -212,7 +211,7 @@ Detail bootloader setting
 ### [Clock] Running Clock Freqeuency
 
 *This board adpot the 16 MHz external crystal oscillator. Which is the same as
-the Arduino Uno R3.*  The original MiniCore botloader supports a variety of
+the Arduino Uno R3.* The original MiniCore botloader supports a variety of
 different clock frequencies. However, we intended to restricted it to support
 only 16 MHz external crystal oscillator to avoid confusion of the options for
 the beginner.
@@ -416,13 +415,13 @@ Directly flash memory writing
     [Serial_read_write](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Serial_read_write/Serial_read_write.ino)
     for a simple proof-of-concept demo, and
     [Flash_put_get](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Flash_put_get/Flash_put_get.ino)
-    +
-    [Flash_iterate](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Flash_iterate/Flash_iterate.ino)
-    for useful examples on how you can store strings, structs and variables to
-    flash and retrieve then afterwards. The
-    [Read_write_without_buffer](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Read_write_without_buffer/Read_write_without_buffer.ino)
-    example demonstrate how you can read and write to the flash memory on a
-    lower level without using a RAM buffer.
+
+    -   [Flash_iterate](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Flash_iterate/Flash_iterate.ino)
+        for useful examples on how you can store strings, structs and variables
+        to flash and retrieve then afterwards. The
+        [Read_write_without_buffer](https://github.com/MCUdude/MiniCore/blob/master/avr/libraries/Optiboot_flasher/examples/Read_write_without_buffer/Read_write_without_buffer.ino)
+        example demonstrate how you can read and write to the flash memory on a
+        lower level without using a RAM buffer.
 
 Programmers `[Advanced]`
 ------------------------
@@ -435,8 +434,7 @@ Programmers `[Advanced]`
 -   To upload the bootloader, after youelect your microcontroller in the
     `[boards]` menu, then select the clock frequency. You'll have to hit "Burn
     bootloader" in order to set the correct fuses and upload the correct
-    bootloader.  
-    
+    bootloader.
 
 -   Make sure you connect an ISP programmer, and select the correct one in the
     "Programmers" menu. For time critical operations an external oscillator is
