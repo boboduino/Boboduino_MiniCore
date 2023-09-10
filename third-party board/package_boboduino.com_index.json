@@ -9,38 +9,7 @@
         "online": "https://forum.arduino.cc/index.php?topic=412070"
       },
       "platforms": [
-        {
-          "name": "Boboduino AVR boards",
-          "architecture": "avr",
-          "version": "2.2.2",
-          "category": "Contributed",
-          "url": "https://github.com/boboduino/Boboduino_MiniCore/raw/master/third-party%20board/2.2.2/BOBODUINO_MiniCore_2.2.2.zip",
-          "archiveFileName": "BOBODUINO_MiniCore_2.2.2.zip",
-          "checksum": "SHA-256:1953479e8ac6dce69aafe5eaa1652a87e80ac94e6e0abac191246cf65413f938",
-          "size": "10948247",
-          "boards": [
-            {
-              "name": "Boboduino Uno R3"
-            }
-          ],
-          "toolsDependencies": [
-            {
-              "packager": "arduino",
-              "name": "avr-gcc",
-              "version": "7.3.0-atmel3.6.1-arduino7"
-            },
-            {
-              "packager": "MiniCore",
-              "name": "avrdude",
-              "version": "7.1-arduino.1"
-            },
-            {
-              "packager": "arduino",
-              "name": "arduinoOTA",
-              "version": "1.3.0"
-            }
-          ]
-        },
+       
         {
           "name": "MiniCore",
           "architecture": "avr",
