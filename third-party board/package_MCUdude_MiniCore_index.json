@@ -1,7 +1,7 @@
 {
   "packages": [
     {
-      "name": "Boboduino",
+      "name": "MiniCore",
       "maintainer": "MCUdude",
       "websiteURL": "https://github.com/MCUdude/MiniCore",
       "email": "",
@@ -10,7 +10,7 @@
       },
       "platforms": [
         {
-          "name": "Boboduino",
+          "name": "MiniCore",
           "architecture": "avr",
           "version": "1.0.0",
           "category": "Contributed",
