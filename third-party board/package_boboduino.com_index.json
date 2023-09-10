@@ -9,7 +9,7 @@
         "online": "https://github.com/MCUdude/MiniCore/issues"
       },
       "platforms": [
-    
+       
         {
           "name": "Boboduino boards",
           "architecture": "avr",
