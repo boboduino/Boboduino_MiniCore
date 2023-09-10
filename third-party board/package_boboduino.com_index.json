@@ -1,7 +1,7 @@
 {
   "packages": [
     {
-      "name": "Boboduino",
+      "name": "MiniCore",
       "maintainer": "Boboduino",
       "websiteURL": "https://boboduino.com",
       "email": "support@boboduino.com",
