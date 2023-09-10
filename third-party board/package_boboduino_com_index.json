@@ -11,7 +11,7 @@
       "platforms": [
        
         {
-          "name": "Boboduino boards",
+          "name": "Boboduino AVR boards",
           "architecture": "avr",
           "version": "2.2.2",
           "category": "Contributed",
