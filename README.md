@@ -54,7 +54,7 @@ the following URL in **Additional Boards Manager URLs**:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-https://raw.githubusercontent.com/boboduino/Boboduino_MiniCore/master/third-party%20board/package_boboduino.com_index.json
+https://raw.githubusercontent.com/boboduino/Boboduino_MiniCore/master/third-party%20board/package_boboduino_com_index.json
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
