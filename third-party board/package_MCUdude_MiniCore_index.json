@@ -1,7 +1,7 @@
 {
   "packages": [
     {
-      "name": "MiniCore",
+      "name": "Boboduino",
       "maintainer": "MCUdude",
       "websiteURL": "https://github.com/MCUdude/MiniCore",
       "email": "",
