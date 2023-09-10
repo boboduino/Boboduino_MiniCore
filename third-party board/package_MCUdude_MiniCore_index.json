@@ -10,7 +10,7 @@
       },
       "platforms": [
         {
-          "name": "MiniCore",
+          "name": "Boboduino",
           "architecture": "avr",
           "version": "1.0.0",
           "category": "Contributed",
