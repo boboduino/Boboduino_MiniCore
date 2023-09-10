@@ -9,19 +9,30 @@
         "online": "https://github.com/MCUdude/MiniCore/issues"
       },
       "platforms": [
-    
         {
-          "name": "Boboduino AVR boards",
+          "name": "MiniCore",
           "architecture": "avr",
           "version": "2.2.2",
           "category": "Contributed",
-          "url": "https://github.com/boboduino/Boboduino_MiniCore/raw/master/third-party%20board/2.2.2/BOBODUINO_MiniCore_2.2.2.zip",
-          "archiveFileName": "BOBODUINO_MiniCore_2.2.2.zip",
-          "checksum": "SHA-256:1953479e8ac6dce69aafe5eaa1652a87e80ac94e6e0abac191246cf65413f938",
-          "size": "10948247",
+          "url": "https://MCUdude.github.io/MiniCore/MiniCore-2.2.2.tar.bz2",
+          "archiveFileName": "MiniCore-2.2.2.tar.bz2",
+          "checksum": "SHA-256:eb8a5829b94bf108e2d7ad31f14331c1c13d56d564b2dc584bb12bd1b34c9180",
+          "size": "602202",
           "boards": [
             {
-              "name": "Boboduino Uno R3"
+              "name": "ATmega328/P/PA/A/PB"
+            },
+            {
+              "name": "ATmega168/P/PA/A/PB"
+            },
+            {
+              "name": "ATmega88/P/PA/A/PB"
+            },
+            {
+              "name": "ATmega48/P/PA/A/PB"
+            },
+            {
+              "name": "ATmega8"
             }
           ],
           "toolsDependencies": [
@@ -42,6 +53,8 @@
             }
           ]
         }
+
+
       ],
       "tools": [
         {
